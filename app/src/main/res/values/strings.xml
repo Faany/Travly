@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Travly</string>
+
+
+
+    <string name="drawer_open">Open navigation Drawer</string>
+    <string name="drawer_close">close navigation Drawer</string>
+
+    <string-array name="drawer_labels">
+        <item>Home</item>
+        <item>About Us</item>
+        <item>Contact Us</item>
+        <item>Rate App</item>
+    </string-array>
+
+
+</resources>
