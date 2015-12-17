@@ -1,14 +1,7 @@
-//#cccc00  #ffffcc
-
-
-
-
-package com.examle.faany.travels;
+package com.examle.faany.travels.Activities;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Configuration;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -19,23 +12,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
+import com.examle.faany.travels.Fragments.MapFragment;
+import com.examle.faany.travels.R;
 
-public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback , AdapterView.OnItemClickListener
+
+
+public class MainActivity  extends AppCompatActivity implements  AdapterView.OnItemClickListener
 {
+    android.support.v4.app.FragmentManager  manager;
 
     //----------------------------------for reverse geo coder---------------------------------------
     String address = "";
@@ -56,28 +45,21 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps);
+        setContentView(R.layout.activity_main);
+
+        manager = getSupportFragmentManager();
 
 
-
-        //--------------------------------------------map starts--------------------------------------------------
-
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);   // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        mapFragment.getMapAsync(this);  //to place a map in our APP
+        //-----------------------Frament transection Starts---------------------------------------------
 
 
-        ImageButton b = (ImageButton) findViewById(R.id.imageButton);
-        b.setOnClickListener(new View.OnClickListener()
-             {
-                 public void onClick(View v)
-                 {
-                        Toast.makeText(MapsActivity.this , "comming soon..."  , Toast.LENGTH_SHORT).show();
-                 }
-             }
-        );
+        MapFragment f2 = new MapFragment();
+        android.support.v4.app.FragmentTransaction transaction2 = manager.beginTransaction();
+        transaction2.add(R.id.myMapLayout, f2, "MF");
+        transaction2.commit();
 
+        //-----------------------Frament transection ends---------------------------------------------
 
-        //--------------------------------------------map end--------------------------------------------------
 
 
         //---------------------------------------------drawer Starts-------------------------------------------------
@@ -176,40 +158,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
 
-
-
-
-
-    @Override
-    public void onMapReady(GoogleMap map)
-    {
-//        mMap = googleMap;
-//
-//        // Add a marker in Sydney and move the camera
-//        LatLng sydney = new LatLng(-34, 151);
-//        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-        /**
-         * Manipulates the map once available.
-         * This callback is triggered when the map is ready to be used.
-         * This is where we can add markers or lines, add listeners or move the camera. In this case,
-         * we just add a marker near Sydney, Australia.
-         * If Google Play services is not installed on the device, the user will be prompted to install
-         * it inside the SupportMapFragment. This method will only be triggered once the user has
-         * installed Google Play services and returned to the app.
-         */
-
-        LatLng Pak = new LatLng(33.6667, 73.1667);       //coordinates of pakistan...by default it is shown...pakistan
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(Pak, 3));      //start may camera idhr jaaye....level of zoom...in increasing order...
-
-        map.setMyLocationEnabled(true);     //to enable zoom button to get my location
-
-        map.addMarker(new MarkerOptions().title("Pakistan").snippet("The Best Country").position(Pak)); // to add marker
-        //map.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.lolo)).anchor(0.0f, 1.0f).position(sydney)); // Anchors the marker on the bottom left
-
-        map.setMapType(GoogleMap.MAP_TYPE_NORMAL);      //map ki type
-
-    }
 }
 
 
