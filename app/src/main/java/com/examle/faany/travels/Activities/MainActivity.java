@@ -1,6 +1,7 @@
 package com.examle.faany.travels.Activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
@@ -12,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -25,11 +28,6 @@ import com.examle.faany.travels.R;
 public class MainActivity  extends AppCompatActivity implements  AdapterView.OnItemClickListener
 {
     android.support.v4.app.FragmentManager  manager;
-
-    //----------------------------------for reverse geo coder---------------------------------------
-    String address = "";
-    String city = "";
-    //----------------------------------------------------------------------------------------------
 
     //--------------------------------------for drawer----------------------------------------------
     private MyAdapter myAdapter;
@@ -52,11 +50,14 @@ public class MainActivity  extends AppCompatActivity implements  AdapterView.OnI
 
         //-----------------------Frament transection Starts---------------------------------------------
 
+        {
 
-        MapFragment f2 = new MapFragment();
-        android.support.v4.app.FragmentTransaction transaction2 = manager.beginTransaction();
-        transaction2.add(R.id.myMapLayout, f2, "MF");
-        transaction2.commit();
+            MapFragment MF = new MapFragment();
+            android.support.v4.app.FragmentTransaction transaction = manager.beginTransaction();
+            transaction.add(R.id.myMainLayOut, MF, "M_F");
+            transaction.commit();
+        }
+
 
         //-----------------------Frament transection ends---------------------------------------------
 

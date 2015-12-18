@@ -13,5 +13,8 @@
         <item>Rate App</item>
     </string-array>
 
+    <dimen name="sizeOfTab">50dp</dimen>
+    <dimen name="textSizeOfTab">16dp</dimen>
+
 
 </resources>

@@ -3,9 +3,12 @@ package com.examle.faany.travels.Fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import com.examle.faany.travels.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -25,6 +28,17 @@ public class MapFragment extends Fragment
 
     MapView mMapView;
     private GoogleMap googleMap;
+
+    FragmentManager manager;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+
+        manager = getFragmentManager();
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -66,6 +80,33 @@ public class MapFragment extends Fragment
 
 
 
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState)
+    {
+
+        super.onActivityCreated(savedInstanceState);
+
+        ImageButton ib = (ImageButton) getView().findViewById(R.id.imageButton);
+        ib.setOnClickListener(new View.OnClickListener()
+                              {
+                                  public void onClick(View v)
+                                  {
+                                      FragmentTransaction transaction = manager.beginTransaction();
+                                      MapFragment f1 = (MapFragment) manager.findFragmentByTag("M_F");      //to remove the MAP fragment...
+                                      if (f1 != null)
+                                      {
+                                          transaction.remove(f1);
+                                      }
+
+                                      GeneralFragment GF = new GeneralFragment();
+                                      transaction.add(R.id.myMainLayOut, GF, "G_F");        //add General Fragment which has ADRESS & TAbs Fragments in it...
+                                      transaction.commit();
+
+
+                                  }
+                              }
+        );
+    }
 
 
 
