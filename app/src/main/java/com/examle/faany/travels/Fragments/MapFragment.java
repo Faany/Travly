@@ -100,6 +100,7 @@ public class MapFragment extends Fragment
 
                                       GeneralFragment GF = new GeneralFragment();
                                       transaction.add(R.id.myMainLayOut, GF, "G_F");        //add General Fragment which has ADRESS & TAbs Fragments in it...
+                                      transaction.addToBackStack(null);
                                       transaction.commit();
 
 

@@ -1,0 +1,7 @@
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="@color/mainThemeColor"
+    android:paddingBottom="10dp"
+    android:textStyle="bold" />

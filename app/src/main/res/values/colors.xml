@@ -6,8 +6,13 @@
 
     <color name="mainThemeColor">#cccc00</color>
     <color name="subThemeColor">#ffffe5</color>
+
+    <color name="subThemeColor_dark">#ffffcc</color>
+
     <color name="pureWhite">#ffffff</color>
 
     <color name="pureBlack">#000000</color>
+
+    <color name="grey">#C0C0C0</color>
 
 </resources>
