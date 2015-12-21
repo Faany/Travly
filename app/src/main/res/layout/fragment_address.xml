@@ -87,6 +87,7 @@
             android:layout_height="wrap_content"
 
             android:textColor="@color/pureWhite"
+            android:textColorHint="@color/LightGrey"
             android:background="@color/mainThemeColor"
             android:ems="10"
             android:layout_weight="1"
